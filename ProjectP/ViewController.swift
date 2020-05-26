@@ -35,7 +35,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func initPicker(){
-        pickerCases = ["Patrick Radio", "NRJ"]
+        pickerCases = ["Patrick Radio", "NRJ", "Fun Radio", "Virgin Radio", "RFM"]
         picker.delegate = self
         picker.dataSource = self
     }
@@ -54,7 +54,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        overrideUserInterfaceStyle = .light
         //Setters des vues
         initViews()
         //Setter du stream audio
@@ -92,6 +92,15 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
         else if select == "NRJ"{
             streamURL = URL(string: "http://cdn.nrjaudio.fm/audio1/fr/30001/mp3_128.mp3?origine=fluxradios")!
+        }
+        else if select == "Fun Radio"{
+            streamURL = URL(string: "http://streaming.radio.funradio.fr/fun-1-48-192")!
+        }
+        else if select == "Virgin Radio"{
+            streamURL = URL(string: "http://ais-live.cloud-services.paris:8000/virgin.mp3")!
+        }
+        else if select == "RFM"{
+            streamURL = URL(string: "https://ais-live.cloud-services.paris:8443/rfm.mp3")!
         }
         player = VLCMedia(url: streamURL)
         mediaPlayer.media = player
